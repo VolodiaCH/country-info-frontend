@@ -11,9 +11,6 @@
 
 Before setting up the project, ensure that you have the following installed:
 
-- **Node.js** (Recommended version: 16.x or higher)  
-  You can download Node.js from [here](https://nodejs.org/).
-
 - **Git**  
   To clone the repository, ensure you have Git installed. Download it from [here](https://git-scm.com/).
 

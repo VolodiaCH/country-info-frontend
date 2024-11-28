@@ -5,6 +5,7 @@ import Loading from "../../components/common/Loading";
 import Error from "@/components/common/Error";
 import { fetchCountryInfo } from "../../services/services";
 import { TCountryInfo } from "../../types/types";
+import { Routes } from "@/types/routes";
 
 const CountryInfo: React.FC = () => {
   const [countryInfo, setCountryInfo] = useState<TCountryInfo | null>(null);
@@ -34,7 +35,16 @@ const CountryInfo: React.FC = () => {
   }, [router.isReady, code]);
 
   if (loading || countryInfo === null) return <Loading />;
-  if (error) return <Error message="error" />;
+  if (error) return <Error message="Error fetching country info" />;
+
+  if (
+    countryInfo.borders === null &&
+    countryInfo.flag === null &&
+    countryInfo.population === null
+  ) {
+    router.push(Routes.NotFound);
+    return null;
+  }
 
   return <CountryInfoPage countryInfo={countryInfo} />;
 };

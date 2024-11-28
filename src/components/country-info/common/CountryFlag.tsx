@@ -1,10 +1,12 @@
 import React from "react";
 import Image from "next/image";
 
-const CountryFlag: React.FC<{ flag: string; countryName: string }> = ({
-  flag,
-  countryName,
-}) => {
+interface ICountryFlag {
+  flag: string;
+  countryName: string;
+}
+
+const CountryFlag: React.FC<ICountryFlag> = ({ flag, countryName }) => {
   return (
     <div className="flex justify-center py-4">
       <Image

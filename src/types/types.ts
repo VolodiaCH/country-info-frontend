@@ -3,20 +3,27 @@ export type TCountry = {
   name: string;
 };
 
-type TBorderCountry = {
-  borders: TBorderCountry | null;
+interface IBorders {
   commonName: string;
   countryCode: string;
   region: string;
-};
+}
 
-type TPopulation = {
+interface IChildBorders extends IBorders {
+  borders: null;
+}
+
+interface IParantBorders extends IBorders {
+  borders: IChildBorders[];
+}
+
+export type TPopulation = {
   year: number;
   value: number;
 };
 
 export type TCountryInfo = {
-  borders: TBorderCountry;
+  borders: IParantBorders;
   flag: string;
-  population: TPopulation;
+  population: TPopulation[];
 };
